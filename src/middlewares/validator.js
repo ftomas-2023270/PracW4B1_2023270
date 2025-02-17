@@ -11,3 +11,7 @@ export const registerValidator = [
     body("password", "Password must be at least 6 characters").isLength({min:8}),
     validarCampos
 ]
+
+export const loginValidator = [
+    
+]
