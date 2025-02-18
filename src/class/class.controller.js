@@ -105,7 +105,7 @@ export const searchClass = async (req, res) =>{
 }
 
 
-export const deletePet = async (req,res ) =>{
+export const deleteClass = async (req,res ) =>{
 
     const {id}= req.params;
     try {
