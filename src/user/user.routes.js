@@ -1,13 +1,14 @@
 import { Router } from "express";
-import { getUsers } from "./user.controller.js";
 import {existeUsuarioById} from "../helpers/db-validator.js"
 import { getUsers, getUserById, updateUser, deleteUser } from "./user.controller.js";
 import {validarCampos} from "../middlewares/validar-campos.js";
 import {validarJWT} from "../middlewares/validar-jwt.js"
+import { check } from "express-validator";
+import { tieneRole } from "../middlewares/validar-roles.js";
 
 const router = Router();
 
-router.get("/",getUsers)
+router.get("/",getUsers);
 
 router.get(
     "/findUser/:id", 
@@ -21,7 +22,6 @@ router.get(
 
 router.put(
     '/:id',
-    uploadProfilePicture.single('profilePicture'),
     [
         check("id","No es un ID valido").isMongoId(),
         check("id").custom(existeUsuarioById),
